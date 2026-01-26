@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Level/Level.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -57,6 +58,7 @@ namespace Wanted {
 			{
 				ProcessInput();
 				// 프레임 처리.
+				BeginPlay();
 				Tick(deltaTime);
 				Draw();
 
@@ -98,6 +100,21 @@ namespace Wanted {
 		return keyStates[keyCode].isKeyDown;
 	}
 
+	void Engine::SetNewLevel(Level* newLevel)
+	{
+		// 기존 레벨 있는지 확인.
+		// 있으면 기존 레벨 제거.
+		// Todo : 임시 코드. 레벨 전환할 때는 바로 제거하면 안됨.
+		if (mainLevel)
+		{
+			delete mainLevel;
+			mainLevel = nullptr;
+		}
+
+		// 레벨 설정.
+		mainLevel = newLevel;
+	}
+
 	void Engine::ProcessInput() 
 	{
 		// 키 마다의 입력 읽기.
@@ -107,7 +124,21 @@ namespace Wanted {
 			keyStates[i].isKeyDown 
 				= GetAsyncKeyState(i) & 0x8000 > 0 ? true : false;
 		}
-		
+	}
+
+	void Engine::BeginPlay()
+	{
+		// 레벨이 있으면 이벤트 전달.
+		if (!mainLevel)
+		{
+			// Silent is violent.
+			// 침욱은 폭력이다.
+			// -> 로그 메시지 남기자.
+			std::cout << "mainLevel is empty.\n";
+			return;
+		}
+
+		mainLevel->BeginPlay();
 	}
 
 	void Engine::Tick(float deltaTime)
@@ -116,14 +147,28 @@ namespace Wanted {
 		// 원래는 1초간 기다려서 평균을 구하는 것이 맞는데
 		// 엔진은 단순히 순간 프레임만 준다.
 
-		std::cout << "DeltaTime: " << deltaTime
-			<< ", FPS: " << (1.0f / deltaTime) << "\n";
+		//std::cout << "DeltaTime: " << deltaTime
+		//	<< ", FPS: " << (1.0f / deltaTime) << "\n";
+		//
+		//// ESC 키 눌리면 종료.
+		//if (GetKeyDown(VK_ESCAPE)) QuitEngine();
+		if (!mainLevel)
+		{
+			std::cout << "Error: Engine::Tick().mainLevel is empty.\n";
+			return;
+		}
 
-		// ESC 키 눌리면 종료.
-		if (GetKeyDown(VK_ESCAPE)) QuitEngine();
+		mainLevel->Tick(deltaTime);
 	}
 	
 	void Engine::Draw()
 	{
+		if (!mainLevel)
+		{
+			std::cout << "Error: Engine::Draw().mainLevel is empty.\n";
+			return;
+		}
+
+		mainLevel->Draw();
 	}
 }
