@@ -15,6 +15,8 @@ namespace Wanted
 
 	protected:
 
+
+	private :
 	};
 }
 
