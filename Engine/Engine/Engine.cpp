@@ -10,6 +10,11 @@ namespace Wanted {
 
 	Engine::~Engine()
 	{
+		if (mainLevel)
+		{
+			delete mainLevel;
+			mainLevel = nullptr;
+		}
 	}
 
 	void Engine::Run()
@@ -150,8 +155,10 @@ namespace Wanted {
 		//std::cout << "DeltaTime: " << deltaTime
 		//	<< ", FPS: " << (1.0f / deltaTime) << "\n";
 		//
-		//// ESC 키 눌리면 종료.
-		//if (GetKeyDown(VK_ESCAPE)) QuitEngine();
+		
+		// ESC 키 눌리면 종료.
+		if (GetKeyDown(VK_ESCAPE)) QuitEngine();
+		
 		if (!mainLevel)
 		{
 			std::cout << "Error: Engine::Tick().mainLevel is empty.\n";
