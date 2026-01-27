@@ -7,4 +7,6 @@ int main()
 	Wanted::Engine engine;
 	engine.SetNewLevel(new TestLevel());
 	engine.Run();
+	
+	return 0;
 }

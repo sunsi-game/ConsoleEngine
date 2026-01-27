@@ -127,7 +127,7 @@ namespace Wanted {
 		for (int i = 0; i < 255; ++i)
 		{
 			keyStates[i].isKeyDown 
-				= GetAsyncKeyState(i) & 0x8000 > 0 ? true : false;
+				= (GetAsyncKeyState(i) & 0x8000) > 0 ? true : false;
 		}
 	}
 
