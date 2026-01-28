@@ -1,20 +1,22 @@
 #pragma once
-#pragma warning(disable: 4251) // 미봉책(방법이 없어 어쩔 수 없이 사용한다.).
 
-// STL
-// 동적 배열.
+#include "Common/RTTI.h"
+
+// STL(Standard Template Library - C++에서 기본 제공).
+// 크기가 알아서 변경되는 배열.
 #include <vector>
-#include "Common/Common.h"
 
 namespace Wanted
 {
 	// 전방 선언.
 	class Actor;
 
-	// 담당 임무 : 레벨에 있는 모든 엑터(물체) 관리.
-	class WANTED_API Level
+	// 담당 임무: 레벨에 있는 모든 액터(물체) 관리.
+	class WANTED_API Level : public RTTI
 	{
-	public :
+		RTTI_DECLARATIONS(Level, RTTI)
+
+	public:
 		Level();
 		virtual ~Level();
 
@@ -25,14 +27,9 @@ namespace Wanted
 
 		// 액터 추가 함수.
 		void AddNewActor(Actor* newActor);
-		
-	protected :
-		// Actor 배열.
-		// 템플릿은 dll로 넘길 수가 없다.
-		// 1. 템플릿 사용 X
-		// 2. 근데 템플릿을 꼭 사용해야 할려면 경고 수준을 낮춘다.
-		// 3. C4251 경고 메시지 꺼버리기
-		std::vector<Actor*> actors; // 다형성으로 관리하고 있다. 
-	};
 
+	protected:
+		// 액터 배열.
+		std::vector<Actor*> actors;
+	};
 }

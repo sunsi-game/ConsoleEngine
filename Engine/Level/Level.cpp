@@ -5,8 +5,8 @@ namespace Wanted
 {
 	Level::Level()
 	{
-
 	}
+
 	Level::~Level()
 	{
 		// 메모리 정리.
@@ -20,7 +20,7 @@ namespace Wanted
 			}
 		}
 
-		// 배열 초기화
+		// 배열 초기화.
 		actors.clear();
 	}
 
@@ -34,6 +34,8 @@ namespace Wanted
 			{
 				continue;
 			}
+
+			actor->BeginPlay();
 		}
 	}
 
@@ -54,11 +56,11 @@ namespace Wanted
 			actor->Draw();
 		}
 	}
+
 	void Level::AddNewActor(Actor* newActor)
 	{
-		// Todo: 나중에 프레임 처리 고려해서 따로 추가 작업 해야 함.
-		// emplace_back과 push_back의 차이점
-		actors.emplace_back(newActor); //R-value 고려하여 나온 함수다.
-
+		// Todo: 나중에 프레임 처리 고려해서 따로 추가 작업 해야함.
+		//actors.push_back(newActor);
+		actors.emplace_back(newActor);
 	}
 }

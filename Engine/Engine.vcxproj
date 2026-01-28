@@ -55,7 +55,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>ENGINE_BUILD_DLL;&lt;different options&gt;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ENGINE_BUILD_DLL;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -78,7 +78,7 @@ xcopy $(OutDir)\Engine.lib ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>ENGINE_BUILD_DLL;&lt;different options&gt;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ENGINE_BUILD_DLL;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -96,20 +96,18 @@ xcopy $(OutDir)\Engine.lib ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Game\Main.cpp" />
     <ClCompile Include="Actor\Actor.cpp" />
-    <ClCompile Include="Actor\TestActor.cpp" />
+    <ClCompile Include="Core\Input.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Level\Level.cpp" />
-    <ClCompile Include="Level\TestLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor\Actor.h" />
-    <ClInclude Include="Actor\TestActor.h" />
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\RTTI.h" />
+    <ClInclude Include="Core\Input.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Level\Level.h" />
-    <ClInclude Include="Level\TestLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
