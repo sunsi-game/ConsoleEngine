@@ -16,11 +16,12 @@ namespace Wanted
 	Vector2::Vector2(int x, int y)
 		: x(x), y(y)
 	{
-		//this->x = x; // 차이점 알아보기.
+		//this->x = x; // 차이점.
 	}
 	
 	Vector2::~Vector2()
 	{
+
 		if (string)
 		{
 			delete[] string;
