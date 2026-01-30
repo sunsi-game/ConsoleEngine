@@ -36,6 +36,8 @@ namespace Wanted
 		inline bool IsActive() const{ return isActive && !destroyRequested; }
 		inline bool DestroyRequested() const { return destroyRequested; }
 
+		inline int GetSortingOrder() const { return sortingOrder; }
+
 	protected:
 		// 이미 BeginPlay 이벤트를 받았는지 여부.
 		bool hasBeganPlay = false;
@@ -55,6 +57,8 @@ namespace Wanted
 		// 오너십(Ownership).
 		Level* owner = nullptr;
 
+		// 그리기 우선 순위 (값이 크면 우선순위가 높음).
+		int sortingOrder = 0;
 
 
 	private:
