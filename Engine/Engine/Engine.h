@@ -36,6 +36,10 @@ namespace Wanted
 		static Engine& Get();
 
 	private:
+
+		// 정리 함수.
+		void Shutdown();
+
 		// 설정 파일 로드 함수.
 		void LoadSetting();
 

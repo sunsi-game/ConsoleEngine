@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Engine/Engine.h"
 #include "Level/TestLevel.h"
-#include "Actor/TestActor.h"
+#include "Actor/Player.h"
 
 using namespace Wanted;
 

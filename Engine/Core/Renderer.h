@@ -1,0 +1,61 @@
+#pragma once
+
+#include "Util/Util.h"
+#include <iostream>
+#include <vector>
+
+namespace Wanted
+{
+	////이해를 돕기 위함.
+	//struct RenderCommand
+	//{
+	//	// 그리는데 필요한 데이터.
+	//	Vector2 position;
+	//	Color color = Color::White;
+	//	char image = ' ';
+	//};
+
+	// DLL 내부에서만 사용하도록.
+	class Renderer
+	{
+	public :
+		// 그리기 함수.
+		static void Draw(const char image)
+		{
+			//// ex
+			//for (auto& command : commands)
+			//{
+			//	Draw(command.position, command.color, command.image);
+			//}
+
+			std::cout << image;
+		}
+
+		// 위치 설정 및 그리기 한번에 처리하는 함수.
+		static void Draw(const Vector2& position, const char image)
+		{
+			Util::SetConsolePostion(position);
+			Draw(image);
+		}
+
+		// 위치, 색상 설정 및 그리기.
+		static void Draw(const Vector2& position, Color color,const char image)
+		{
+			//커서 위치 설정.
+			Util::SetConsolePostion(position);
+
+			// 텍스트 색상 설정.
+			Util::SetConsoleTextColor(color);
+
+			// 글자 출력.
+			Draw(image);
+
+			// 원래 색상으로 다시 설정 (흰색으로).
+			Util::SetConsoleTextColor(Color::White);
+		}
+
+	private:
+		//static std::vector<RenderCommand> commands;
+
+	};
+}
