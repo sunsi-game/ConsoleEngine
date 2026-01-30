@@ -62,4 +62,12 @@ namespace Wanted
 	{
 		return !(*this == other); // ==은 이미 위에서 오버라이딩 했기 때문에 가능하다.
 	}
+	Vector2::operator COORD() const
+	{
+		COORD coord = {};
+		coord.X = static_cast<short> (x);
+		coord.Y = static_cast<short> (y);
+
+		return coord;
+	}
 }

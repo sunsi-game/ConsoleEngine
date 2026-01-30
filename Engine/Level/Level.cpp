@@ -61,6 +61,40 @@ namespace Wanted
 	{
 		// Todo: 나중에 프레임 처리 고려해서 따로 추가 작업 해야함.
 		//actors.push_back(newActor);
-		actors.emplace_back(newActor);
+		//actors.emplace_back(newActor);
+		addRequestedActors.emplace_back(newActor);
+	}
+
+	void Level::ProcessAddAndDestroyActors()
+	{
+		// 제거 처리.
+		for (int i = 0; i < static_cast<int>(actors.size()); )
+		{
+			// 제거 요청된 액터가 있는지 확인.
+			if (actors[i]->DestroyRequested())
+			{
+				// 삭제 처리.
+				delete actors[i];
+				actors.erase(actors.begin() + i);
+
+				continue;
+			}
+
+			++i;
+		}
+
+		// 추가 처리.
+		if (addRequestedActors.size() == 0)
+		{
+			return;
+		}
+
+		for (Actor* const actor : addRequestedActors)
+		{
+			actors.emplace_back(actor); // R-Value를 적극 처리해주는
+		}
+
+		// 처리가 끝났으면 배열 초기화 .
+		addRequestedActors.clear();
 	}
 }
