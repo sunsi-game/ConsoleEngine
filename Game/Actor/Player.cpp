@@ -9,8 +9,8 @@
 
 using namespace Wanted;
 
-Player::Player()
-	: super('P', Vector2(2,3), Color::Red) //Actor() 같은 결과다.
+Player::Player(const Vector2& position)
+	: super('P', position, Color::Red) //Actor() 같은 결과다.
 {
 	// 그리기 우선순위 높게 설정.
 	sortingOrder = 10;
