@@ -55,40 +55,34 @@ namespace Wanted
 		{
 			//같은 위치에 다른 액터가 있는지 확인하기 위함.
 			Actor* search = nullptr;
-			for (Actor* actor : actors)
+			for (Actor* otherActor : actors)
 			{
-				
-				for (Actor* otherActor : actors)
+				// 같은 액터는 비교 안함.
+				if (actor == otherActor)
 				{
-					// 같은 액터는 비교 안함.
-					if (actor == otherActor)
-					{
-						continue;
-					}
+					continue;
+				}
 
-					// 위치 비교.
-					if (actor->GetPostion() == otherActor->GetPostion())
+				// 위치 비교.
+				if (actor->GetPosition() == otherActor->GetPosition())
+				{
+					// 정렬 순서 비교.
+					if (actor->GetSortingOrder()
+						< otherActor->GetSortingOrder())
 					{
-						// 정렬 순서 비교.
-						if (actor->GetSortingOrder()
-							< otherActor->GetSortingOrder())
-						{
-							search = otherActor;
-							break;
-						}
-
 						search = otherActor;
 						break;
 					}
 				}
 			}
-			
+
 			// 같은 위치에 우선순위 높은 다른 액터가 있으면 안그림.
 			if (search)
 			{
 				continue;
 			}
 
+			
 			actor->Draw();
 		}
 	}
@@ -107,19 +101,18 @@ namespace Wanted
 	void Level::ProcessAddAndDestroyActors()
 	{
 		// 제거 처리.
-		for (int i = 0; i < static_cast<int>(actors.size()); )
+		for (int ix = 0; ix < static_cast<int>(actors.size()); )
 		{
 			// 제거 요청된 액터가 있는지 확인.
-			if (actors[i]->DestroyRequested())
+			if (actors[ix]->DestroyRequested())
 			{
 				// 삭제 처리.
-				delete actors[i];
-				actors.erase(actors.begin() + i);
-
+				delete actors[ix];
+				actors.erase(actors.begin() + ix);
 				continue;
 			}
 
-			++i;
+			++ix;
 		}
 
 		// 추가 처리.

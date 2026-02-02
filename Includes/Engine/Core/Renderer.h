@@ -34,7 +34,7 @@ namespace Wanted
 		// 위치 설정 및 그리기 한번에 처리하는 함수.
 		static void Draw(const Vector2& position, const char image)
 		{
-			Util::SetConsolePostion(position);
+			Util::SetConsolePosition(position);
 			Draw(image);
 		}
 
@@ -42,7 +42,7 @@ namespace Wanted
 		static void Draw(const Vector2& position, Color color,const char image)
 		{
 			//커서 위치 설정.
-			Util::SetConsolePostion(position);
+			Util::SetConsolePosition(position);
 
 			// 텍스트 색상 설정.
 			Util::SetConsoleTextColor(color);

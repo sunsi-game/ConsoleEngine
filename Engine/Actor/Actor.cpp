@@ -35,7 +35,7 @@ namespace Wanted
 		Renderer::Draw(position, color, image);
 	}
 
-	void Actor::SetPostion(const Vector2& newPosition)
+	void Actor::SetPosition(const Vector2& newPosition)
 	{
 		//·»´õ·¯¿¡ ºóÄ­ ±×¸®±â ¿äÃ»
 		Renderer::Draw(position, ' ');

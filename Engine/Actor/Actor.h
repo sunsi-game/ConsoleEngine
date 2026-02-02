@@ -24,8 +24,8 @@ namespace Wanted
 		virtual void Draw();
 
 		// 위치 변경 및 읽기 함수.
-		void SetPostion(const Vector2& newPostion);
-		inline Vector2 GetPostion() const { return position; }
+		void SetPosition(const Vector2& newPostion);
+		inline Vector2 GetPosition() const { return position; }
 
 		// 오너십 추가/읽기 함수.
 		inline void SetOwner(Level* newOwner) { owner = newOwner; }

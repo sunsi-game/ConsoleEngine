@@ -8,7 +8,7 @@ using namespace Wanted;
 namespace Util
 {
 	// 콘솔 커서 위치 이동(설정)하는 함수.
-	inline void SetConsolePostion(const Vector2& position)
+	inline void SetConsolePosition(const Vector2& position)
 	{
 		//COORD coord = {};
 		//coord.X = static_cast<short>(position.x);
