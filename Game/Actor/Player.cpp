@@ -4,6 +4,8 @@
 #include "Actor/Box.h"
 #include "Level/Level.h"
 
+#include "Game/Game.h"
+
 #include "Interface/ICanPlayerMove.h"
 
 #include <iostream>
@@ -29,12 +31,17 @@ void Player::BeginPlay()
 
 
 
-
-
-
-
 void Player::Tick(float deltaTime)
 {
+	super::Tick(deltaTime);
+	// ESC 설정
+	if (Wanted::Input::Get().GetKeyDown(VK_ESCAPE))
+	{
+		// 메뉴 활성화.
+		Game::Get().ToggleMenu();
+		return;
+	}
+
 	// Q키 종료.
 	if (Wanted::Input::Get().GetKeyDown('Q'))
 	{

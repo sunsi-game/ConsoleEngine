@@ -64,3 +64,24 @@ namespace Util
 	}
 
 }
+
+// 메모리 정리 함수.
+template<typename T>
+void SafeDelete(T*& pointer)
+{
+	if (pointer)
+	{
+		delete pointer;
+		pointer = nullptr;
+	}
+}
+
+template<typename T>
+void SafeDeleteArray(T*& pointer)
+{
+	if (pointer)
+	{
+		delete[] pointer;
+		pointer = nullptr;
+	}
+}
