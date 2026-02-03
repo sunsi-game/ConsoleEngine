@@ -140,10 +140,13 @@ namespace Wanted
 					continue;
 				}
 
-				// 데이터 기록
+				// 데이터 기록.
 				frame->charInfoArray[index].Char.AsciiChar = command.text[sourceIndex];
 				frame->charInfoArray[index].Attributes = (WORD)command.color;
 
+				// 우선 순위 업데이트.
+				frame->sortingOrderArray[index]
+					= command.sortingOrder;
 			}
 		}
 

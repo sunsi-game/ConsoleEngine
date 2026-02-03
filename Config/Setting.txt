@@ -1,1 +1,4 @@
 framerate = 120
+width = 40
+height = 20
+

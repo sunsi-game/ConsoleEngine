@@ -15,7 +15,7 @@ namespace Wanted
 		RTTI_DECLARATIONS(Actor, RTTI)
 
 	public:
-		Actor(const char image = ' ', const Vector2& position = Vector2::Zero, Color color = Color::White);
+		Actor(const char* image = " ", const Vector2& position = Vector2::Zero, Color color = Color::White);
 		virtual ~Actor();
 
 		// 게임 플레이 이벤트.
@@ -49,7 +49,7 @@ namespace Wanted
 		bool destroyRequested = false;
 
 		// 그릴 문자(이미지)
-		char image = ' ';
+		char* image = nullptr;
 
 		// 색상.
 		Color color = Color::White;
